@@ -1,7 +1,7 @@
 Catpow Compiler
 ===
 
-<img src="https://img.shields.io/badge/PHP-7.2-45A?logo=php"><img src="https://img.shields.io/badge/npm-6.4-blue?logo=npm">
+<img src="https://img.shields.io/badge/PHP-7.2-45A?logo=php"> <img src="https://img.shields.io/badge/npm-6.4-blue?logo=npm">
 
 ---
 
