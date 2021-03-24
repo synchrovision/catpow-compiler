@@ -9,7 +9,7 @@ class Scss{
 		else{$style_config_modified_time=filemtime($config_file);}
 		foreach($scss_files as $scss_file){
 			$css_file=substr(str_replace(['/scss/','/_scss/'],'/css/',$scss_file),0,-4).'css';
-			if(!is_dir(dirname($css_file))){mkdir(dirname($css_file),1);}
+			if(!is_dir(dirname($css_file))){mkdir(dirname($css_file),0777,true);}
 			$css_files[]=$css_file;
 			if(
 				!file_exists($css_file) or
