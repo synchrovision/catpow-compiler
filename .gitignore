@@ -1,0 +1,5 @@
+vendor
+node_modules
+_notes
+package-lock.json
+logs
