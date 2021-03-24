@@ -7,5 +7,5 @@ JSX,SCSS及び独自のテンプレートPHPのHTMLへのコンパイルを行�
 ターミナルなどCLIで``compiler.php``を実行することで、親ディレクトリ以下に存在する``.jsx`` ``.scss`` ``.tmpl.php``の拡張子を持つファイルの監視し、そのファイルの更新時にコンパイルを行います。
  
  ```command
-git submodule add https://github.com/synchrovision/cawpow-compiler.git compiler
+git submodule add https://github.com/synchrovision/catpow-compiler.git compiler
  ```
