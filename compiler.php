@@ -4,6 +4,7 @@ putenv('PATH='.getenv('PATH').':'.__DIR__.':'.__DIR__.'/node_modules/.bin');
 putenv('NODE_PATH='.getenv('NODE_PATH').':'.__DIR__.'/node_modules');
 passthru('cd '.__DIR__);
 
+define('ABSPATH',dirname(__DIR__));
 
 init();
 
@@ -24,22 +25,24 @@ function init(){
 		$f=__DIR__.'/classes/'.str_replace('\\','/',$class).'.php';
 		if(file_exists($f)){include($f);}
 	});
-	$root_dir=dirname(__DIR__);
+	foreach(glob(__DIR__.'/includes/*.php') as $inc_file){
+		include $inc_file;
+	}
 	$default_dir=__DIR__.'/default';
 	foreach(glob($default_dir.'/{*,.[!.]*}',GLOB_BRACE) as $default_file){
 		if(is_dir($default_file)){
 			$dir_name=basename($default_file);
-			if(!is_dir($root_dir.'/'.$dir_name)){mkdir($root_dir.'/'.$dir_name);}
+			if(!is_dir(ABSPATH.'/'.$dir_name)){mkdir(ABSPATH.'/'.$dir_name);}
 			foreach(glob($default_file.'/{*,.[!.]*}',GLOB_BRACE) as $default_child_file){
 				$file_name=basename($default_child_file);
-				if(!file_exists($f=$root_dir.'/'.$dir_name.'/'.$file_name)){
+				if(!file_exists($f=ABSPATH.'/'.$dir_name.'/'.$file_name)){
 					copy($default_child_file,$f);
 				}
 			}
 		}
 		else{
 			$file_name=basename($default_file);
-			if(!file_exists($f=$root_dir.'/'.$file_name)){
+			if(!file_exists($f=ABSPATH.'/'.$file_name)){
 				copy($default_file,$f);
 			}
 		}
@@ -47,9 +50,8 @@ function init(){
 }
 
 function get_tgt_files($ext){
-	$root_dir=dirname(__DIR__);
-	$files=glob($root_dir.'/[!_]*.'.$ext);
-	foreach(glob($root_dir.'/*',GLOB_ONLYDIR) as $dir){
+	$files=glob(ABSPATH.'/[!_]*.'.$ext);
+	foreach(glob(ABSPATH.'/*',GLOB_ONLYDIR) as $dir){
 		if(in_array(basename($dir),['compiler','config'],true)){continue;}
 		foreach(glob($dir.'{,/*,/*/*,/*/*/*}/[!_]*.'.$ext,GLOB_BRACE) as $file){
 			$files[]=$file;
@@ -64,7 +66,7 @@ function cp_jsx_compile($jsx_files){
 		if(!file_exists($jsx_file)){continue;}
 		if(!file_exists($js_file) or filemtime($js_file) < filemtime($jsx_file)){
 			passthru('babel '.$jsx_file.' -o '.$js_file.' > '.__DIR__.'/logs/result.txt');
-			echo "build {$js_file}\n";
+			printf("build %s\n",substr($js_file,strlen(ABSPATH)));
 			touch($js_file);
 		}
 	}
