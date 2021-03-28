@@ -23,12 +23,11 @@ function init(){
 	if(!file_exists(__DIR__.'/node_modules')){passthru('npm install');}
 	if(!file_exists(__DIR__.'/scss')){passthru('git submodule update -i');}
 	spl_autoload_register(function($class){
-		$f=__DIR__.'/classes/'.str_replace('\\','/',$class).'.php';
-		if(file_exists($f)){include($f);}
+		if(file_exists($f=__DIR__.'/config/classes/'.str_replace('\\','/',$class).'.php')){include($f);return;}
+		if(file_exists($f=__DIR__.'/classes/'.str_replace('\\','/',$class).'.php')){include($f);}
 	});
-	foreach(glob(__DIR__.'/includes/*.php') as $inc_file){
-		include $inc_file;
-	}
+	foreach(glob(__DIR__.'/includes/*.php') as $inc_file){include $inc_file;}
+	if(file_exists($f=__DIR__.'/config/functions.php')){include($f);}
 	$default_dir=__DIR__.'/default';
 	foreach(glob($default_dir.'/{*,.[!.]*}',GLOB_BRACE) as $default_file){
 		if(is_dir($default_file)){
