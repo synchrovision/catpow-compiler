@@ -2,9 +2,8 @@
 
 putenv('PATH='.getenv('PATH').':'.__DIR__.':'.__DIR__.'/node_modules/.bin');
 putenv('NODE_PATH='.getenv('NODE_PATH').':'.__DIR__.'/node_modules');
-passthru('cd '.__DIR__);
-
 define('ABSPATH',dirname(__DIR__));
+chdir(__DIR__);
 
 init();
 
@@ -21,6 +20,8 @@ while(true){
 }
 
 function init(){
+	if(!file_exists(__DIR__.'/node_modules')){passthru('npm install');}
+	if(!file_exists(__DIR__.'/scss')){passthru('git submodule update -i');}
 	spl_autoload_register(function($class){
 		$f=__DIR__.'/classes/'.str_replace('\\','/',$class).'.php';
 		if(file_exists($f)){include($f);}
