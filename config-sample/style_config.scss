@@ -1,0 +1,76 @@
+@charset "utf-8";
+@import "catpow.scss";
+
+$accent_color:#36c;
+$main_color:#007cba;
+$background_color:#fefefe;
+
+$heading_font:$gothic;
+$text_font:$gothic;
+$caption_font:$gothic;
+$decoration_font:$gothic;
+$strong_font:$gothic;
+
+$selectors:();
+
+$colors:(
+	m:$main_color, 
+	1:change-color($main_color,$hue:0deg),
+	2:change-color($main_color,$hue:30deg),
+	3:change-color($main_color,$hue:60deg),
+	4:change-color($main_color,$hue:90deg),
+	5:change-color($main_color,$hue:120deg),
+	6:change-color($main_color,$hue:150deg),
+	7:change-color($main_color,$hue:180deg),
+	8:change-color($main_color,$hue:210deg),
+	9:change-color($main_color,$hue:240deg),
+	10:change-color($main_color,$hue:270deg),
+	11:change-color($main_color,$hue:300deg),
+	12:change-color($main_color,$hue:330deg),
+	a:$accent_color,
+	a1:change-color($accent_color,$hue:0deg),
+	a2:change-color($accent_color,$hue:30deg),
+	a3:change-color($accent_color,$hue:60deg),
+	a4:change-color($accent_color,$hue:90deg),
+	a5:change-color($accent_color,$hue:120deg),
+	a6:change-color($accent_color,$hue:150deg),
+	a7:change-color($accent_color,$hue:180deg),
+	a8:change-color($accent_color,$hue:210deg),
+	a9:change-color($accent_color,$hue:240deg),
+	a10:change-color($accent_color,$hue:270deg),
+	a11:change-color($accent_color,$hue:300deg),
+	a12:change-color($accent_color,$hue:330deg),
+	b:$background_color,
+	b2:darken($background_color,5%),
+	t:$text_color,
+	i:#fff,
+	sh:rgba(#000,60% - lightness($background_color)/2),
+	lt:rgba(#fff,20% + lightness($background_color)/2),
+	shd:rgba(#000,30%),
+	n:transparent
+);
+
+$images:(
+	logo:'images/logo.png',
+	bg:'images/bg.png',
+);
+
+$fonts:(
+	h:$heading_font,
+	t:$text_font,
+	c:$caption_font,
+	d:$decoration_font,
+	s:$strong_font,
+);
+
+$sizes:(
+);
+
+$breakpoints:(
+	1:'min-width:640px',
+	2:'min-width:960px',
+	3:'min-width:1600px',
+	-1:'max-width:639px',
+	-2:'max-width:959px',
+	-3:'max-width:1599px',
+);
