@@ -4,3 +4,4 @@ _notes
 package-lock.json
 logs
 /scss
+/config
