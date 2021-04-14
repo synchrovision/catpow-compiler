@@ -2,7 +2,7 @@
 namespace Catpow;
 
 function picture($name,$alt){
-	printf('<picture><source media="(max-width: 767px)" srcset="images/%1$s_sp.png"><img src="../about/images/%1$s.png" alt="%2$s"/></picture>',$name,$alt);
+	printf('<picture><source media="(max-width: 767px)" srcset="images/%1$s_sp.png"><img src="images/%1$s.png" alt="%2$s"/></picture>',$name,$alt);
 }
 function simple_md($text,$param=[]){
 	$param=array_merge(
