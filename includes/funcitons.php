@@ -13,3 +13,10 @@ function simple_md($text,$param=[]){
 	$text=preg_replace('/\[(.+?)\]\((.+?)\)/','<a class="'.$param['link_class'].'" href="$2" target="_brank">$1</a>',$text);
 	return $text;
 }
+
+function do_shortcode($str){
+	return ShortCode::do_shortcode($str);
+}
+function add_shortcode($name,$function){
+	return ShortCode::add_shortcode($name,$function);
+}
