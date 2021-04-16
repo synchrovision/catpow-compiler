@@ -2,8 +2,11 @@
 
 putenv('PATH='.getenv('PATH').':'.__DIR__.':'.__DIR__.'/node_modules/.bin');
 putenv('NODE_PATH='.getenv('NODE_PATH').':'.__DIR__.'/node_modules');
-define('ABSPATH',dirname(__DIR__));
 chdir(__DIR__);
+define('ABSPATH',dirname(__DIR__));
+define('APP_DIR',__DIR__);
+define('CONF_DIR',__DIR__.'/config');
+define('TEMPLATES_DIR',CONF_DIR.'/templates');
 
 init();
 
@@ -23,11 +26,11 @@ function init(){
 	if(!file_exists(__DIR__.'/node_modules')){passthru('npm install');}
 	if(!file_exists(__DIR__.'/scss')){passthru('git submodule update -i');}
 	spl_autoload_register(function($class){
-		if(file_exists($f=__DIR__.'/config/classes/'.str_replace('\\','/',$class).'.php')){include($f);return;}
+		if(file_exists($f=CONF_DIR.'/classes/'.str_replace('\\','/',$class).'.php')){include($f);return;}
 		if(file_exists($f=__DIR__.'/classes/'.str_replace('\\','/',$class).'.php')){include($f);}
 	});
 	foreach(glob(__DIR__.'/includes/*.php') as $inc_file){include $inc_file;}
-	if(file_exists($f=__DIR__.'/config/functions.php')){include($f);}
+	if(file_exists($f=CONF_DIR.'/functions.php')){include($f);}
 	$default_dir=__DIR__.'/default';
 	foreach(glob($default_dir.'/{*,.[!.]*}',GLOB_BRACE) as $default_file){
 		if(is_dir($default_file)){
