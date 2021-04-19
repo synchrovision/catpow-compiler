@@ -20,3 +20,21 @@ function do_shortcode($str){
 function add_shortcode($name,$function){
 	return ShortCode::add_shortcode($name,$function);
 }
+
+function get_template_part($name,$slug=null){
+	if(!empty($slug)){
+		if(file_exists($f=\TEMPLATES_DIR.'/'.$name.'-'.$slug.'.php')){
+			return include $f;
+		}
+	}
+	return include \TEMPLATES_DIR.'/'.$name.'.php';
+}
+function get_header($slug=null){
+	get_template_part('header',$slug);
+}
+function get_sidebar($slug=null){
+	get_template_part('sidebar',$slug);
+}
+function get_footer($slug=null){
+	get_template_part('footer',$slug);
+}

@@ -1,0 +1,12 @@
+<?php
+namespace Catpow;
+class Site{
+	public function __get($name){
+		switch($name){
+			case 'title':return '';
+			case 'url':return '';
+			case 'desc':return '';
+			case 'image':return '';
+		}
+	}
+}
