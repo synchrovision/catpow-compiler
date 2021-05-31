@@ -1,6 +1,6 @@
 {
 	"presets": [
-		[ "env", {
+		[ "@babel/env", {
 			"modules": false,
 			"targets": {
 				"browsers": [
@@ -16,7 +16,7 @@
 		} ]
 	],
 	"plugins": [
-		"transform-react-jsx",
-		"transform-object-rest-spread"
+		"@babel/transform-react-jsx",
+		"@babel/plugin-proposal-object-rest-spread"
 	]
 }
