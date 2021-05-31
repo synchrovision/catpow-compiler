@@ -5,11 +5,11 @@
 		"watch": "php compiler.php"
 	},
 	"devDependencies": {
-		"babel-cli": "*",
-		"babel-core": "*",
-		"babel-plugin-transform-object-rest-spread": "*",
-		"babel-plugin-transform-react-jsx": "*",
-		"babel-preset-env": "*",
-		"node-sass": "*"
+		"@babel/cli": "*",
+		"@babel/core": "*",
+		"@babel/plugin-proposal-object-rest-spread": "*",
+		"@babel/plugin-transform-react-jsx": "*",
+		"@babel/preset-env": "*",
+		"node-sass": "^6.0.0"
 	}
 }
